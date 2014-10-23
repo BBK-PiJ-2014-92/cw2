@@ -18,7 +18,11 @@ public class Fraction {
 
     @Override
     public String toString() {
-        return "" + getNumerator() + '/' + getDenominator();
+		if (denominator == 1) {
+			return "" + getNumerator();
+		} else {
+			return "" + getNumerator() + '/' + getDenominator();
+		}
     }
 
     public int getNumerator() {
@@ -87,17 +91,19 @@ public class Fraction {
 
 	public Fraction absValue() {
 
-		if(this.getNumerator() < 0 && this.getDenominator() < 0) {
-			int num = this.getNumerator() * -1;
-			int denom = this.getDenominator() * -1;
-			return new Fraction(num, denom);
-		} else if(this.getNumerator() < 0) {
+		} if(this.getNumerator() < 0) {
 			int num = this.getNumerator() * -1;
 			return new Fraction(num, this.getDenominator());
 		} else if(this.getDenominator() < 0) {
 			int denom = this.getDenominator * -1;
 			return new Fraction(this.getNumerator, denom);
 		}
+	}
+
+	public Fraction negate() {
+
+		int num = this.getNumerator() * -1;
+		new Fraction(num, this.getDenominator);
 	}
 
     private int myGcd(int a, int b) {
