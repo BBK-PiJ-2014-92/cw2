@@ -64,12 +64,30 @@ public class Fraction {
         return new Fraction(num, denom);
     }
 
-    public Fraction addition(Fraction other) {
+    public Fraction add(Fraction other) {
 
-		int num = this.getNumerator() * other.getDenominator + other.getNumerator * this.getDenominator;
-		int denom = this.getDenominator * other.getDenominator;
+		int num = this.getNumerator() * other.getDenominator() + other.getNumerator() * this.getDenominator();
+		int denom = this.getDenominator() * other.getDenominator();
 		return new Fraction(num, denom);
 	}
+
+	public Fraction subtract(Fraction other) {
+
+		int num = this.getNumerator() * other.getDenominator() - other.getNumerator() * this.getDenominator();
+		int denom = this.getDenominator() * other.getDenominator();
+		return new Fraction(num, denom);
+	}
+
+	public Fraction divide(Fraction other) {
+
+		int num = this.getNumerator() * other.getDenominator();
+		int denom = this.getDenominator() * other.getNumerator();
+		return new Fraction(num, denom);
+	}
+
+	public Fraction absValue() {
+
+		if(
 
     private int myGcd(int a, int b) {
         while (b != 0) {
