@@ -91,9 +91,9 @@ public class Fraction {
 
 	public Fraction absValue() {
 
-		if(this.getNumerator() < 0) {
-			int num = this.getNumerator() * -1;
-			return new Fraction(num, this.getDenominator());
+		if(this.getDenominator() < 0) {
+			int denom = this.getNumerator() * -1;
+			return new Fraction(this.getNumerator(), denom());
 		}else {
 			return new Fraction(this.getNumerator(), this.getDenominator());
 		}
@@ -101,7 +101,7 @@ public class Fraction {
 
 	public Fraction negate() {
 
-		int num = this.getNumerator() * -1;
+		int denom = this.Denominator() * -1;
 		return new Fraction(num, this.getDenominator());
 	}
 
