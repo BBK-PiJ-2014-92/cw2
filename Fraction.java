@@ -93,7 +93,7 @@ public class Fraction {
 
 		if(this.getDenominator() < 0) {
 			int denom = this.getNumerator() * -1;
-			return new Fraction(this.getNumerator(), denom());
+			return new Fraction(this.getNumerator(), denom);
 		}else {
 			return new Fraction(this.getNumerator(), this.getDenominator());
 		}
@@ -101,8 +101,8 @@ public class Fraction {
 
 	public Fraction negate() {
 
-		int denom = this.Denominator() * -1;
-		return new Fraction(num, this.getDenominator());
+		int denom = this.getDenominator() * -1;
+		return new Fraction(this.getNumerator(), denom);
 	}
 
     private int myGcd(int a, int b) {
