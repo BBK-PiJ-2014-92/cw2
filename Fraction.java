@@ -91,7 +91,7 @@ public class Fraction {
 
 	public Fraction absValue() {
 
-		} if(this.getNumerator() < 0) {
+		if(this.getNumerator() < 0) {
 			int num = this.getNumerator() * -1;
 			return new Fraction(num, this.getDenominator());
 		} else if(this.getDenominator() < 0) {
