@@ -21,12 +21,14 @@ public class FractionTest {
 	test(new Fraction(4, -8),new Fraction(1, 2),"error test 5");
 
         // extend with extra tests
-    System.out.println(f.add(g));
-    System.out.println(g.divide(g));
-    System.out.println(h.subtract(f));
-    System.out.println(i.absValue());
-    System.out.println(j.absValue());
-    System.out.println(f.negate());
+    System.out.println(f.add(g)); //Result should be 4/5
+    System.out.println(g.divide(g)); //Result should be 1
+    System.out.println(h.subtract(f)); //Result should be 3/10
+    System.out.println(i.absValue()); //Result should be 1/2
+    System.out.println(j.absValue()); //Result should be 1/2
+    System.out.println(f.negate()); //Result should be -3/10
+    System.out.println(j.negate()); //Result should be 1/2
+    System.out.println(i.negate()); //Result should be 1/2
 
     }
 
