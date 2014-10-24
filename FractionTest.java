@@ -10,6 +10,7 @@ public class FractionTest {
 	Fraction f = new Fraction(3,10);
 	Fraction g = new Fraction(1,2);
 	Fraction h = new Fraction(3,5);
+	Fraction i = new Fraction(-1,2);
 	if (!f.equals(g.multiply(h))) System.out.println("Multiply failed");
         // test equals
 	test(new Fraction(1, 2),new Fraction(1, 2),"error test 1");
@@ -19,6 +20,12 @@ public class FractionTest {
 	test(new Fraction(4, -8),new Fraction(1, 2),"error test 5");
 
         // extend with extra tests
+    System.out.println(f.add(g));
+    System.out.println(g.divide(g));
+    System.out.println(h.subtract(f));
+    System.out.println(i.absValue());
+    System.out.println(f.negate());
+
     }
 
     static void test(Fraction f1, Fraction f2, String msg){
