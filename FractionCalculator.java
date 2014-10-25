@@ -25,9 +25,15 @@ public class FractionCalculator {
 		if (splitNumbers[count].contains("/") {
 			for (int i = 0; i < splitNumbers[count].length; i++) {
 				if (splitNumbers[count].charAt(i).equals("/") {
-					int num = Integer.parseInt(splitNumbers[count].substring(0, i));
-					int denom = Integer.parseInt(splitNumbers[count].substring(i+1, splitNumbers[count].length -1);
-					return new Fraction(num, denom);
+					if (!Integer.parseInt(splitNumbers[count].substring(0, i)) || !Integer.parseInt(splitNumbers[count].substring(i+1, splitNumbers[count].length -1)) {
+						System.out.println("Error");
+						fraction.numerator = 0;
+						fraction.denominator = 1;
+						break;
+					}else {
+						int num = Integer.parseInt(splitNumbers[count].substring(0, i));
+						int denom = Integer.parseInt(splitNumbers[count].substring(i+1, splitNumbers[count].length -1);
+						return new Fraction(num, denom);
 				}
 			}
 		}else {
