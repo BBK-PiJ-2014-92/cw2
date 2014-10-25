@@ -16,22 +16,19 @@ public class FractionCalculator {
 				if (rememberedOp = null) {
 					fraction = tempFraction (String[] splitNumbers, count);
 				} else {
-					if (rememberedOp.equals("+") {
-								fraction = fraction.add(new Fraction(num, denom));
-							}
-						}
-					}
+					fraction = fraction.operator(String rememberedOp, tempFraction (String[] splitNumbers, int count);
 				}
+			}
 
 	public Fraction tempFraction (String[] splitNumbers, int count) {
-		if (splitNumbers[count].charAt(i).equals("/") {
+		if (splitNumbers[count].contains("/") {
 			for (int i = 0; i < splitNumbers[count].length; i++) {
 				if (splitNumbers[count].charAt(i).equals("/") {
 					int num = Integer.parseInt(splitNumbers[count].substring(0, i));
 					int denom = Integer.parseInt(splitNumbers[count].substring(i+1, splitNumbers[count].length -1);
+					return new Fraction(num, denom);
 				}
 			}
-			return new Fraction(num, denom);
 		}else {
 			int num = Integer.parseInt(splitNumbers[count])
 			int denom = 1;
@@ -39,4 +36,16 @@ public class FractionCalculator {
 		}
 	}
 
-	public Fraction operator
+	public Fraction operator(String rememberedOp, tempFraction) {
+		if (rememberedOp.equals("+") {
+			rememberedOp = null;
+			return this = this.add(tempFraction);
+		}else if (rememberedOp.equals("-") {
+			rememberedOp = null;
+			return this = this.subtract(tempFraction);
+		}else if (rememberedOp.equals("*") {
+			rememberedOp = null;
+			return this = this.multiply(tempFraction);
+		}else {
+			rememberedOp = null;
+			return this = this.divide(tempFraction);
