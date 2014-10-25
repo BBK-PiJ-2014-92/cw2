@@ -7,11 +7,12 @@ public class FractionCalculator {
 			if (splitNumbers[count].equals("/" || "+" || "-" || "+") {
 				rememberedOp = splitNumbers[count];
 			} else if (splitNumbers[count].equals("a" || "A" || "abs") {
-
+				fraction = fraction.absValue();
 			} else if (splitNumbers[count].equals("n" || "N" || "neg") {
-
+				fraction = fraction.negate();
 			} else if (splitNumbers[count].equals("c" || "C" || "clear") {
-
+				fraction.numerator = 0;
+				fraction.denominator = 1;
 			} else if (splitNumbers[count].contains{"/") {
 				if (rememberedOp = null) {
 					fraction = tempFraction (String[] splitNumbers, count);
@@ -49,3 +50,5 @@ public class FractionCalculator {
 		}else {
 			rememberedOp = null;
 			return this = this.divide(tempFraction);
+		}
+	}
