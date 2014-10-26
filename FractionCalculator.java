@@ -23,7 +23,7 @@ public class FractionCalculator {
 				} else {
 					fraction = this.operator(fraction, tempFraction (splitNumbers, count, fraction));
 				}
-			} else if (splitNumbers[count].matches("[0-9]+")){
+			} else if (splitNumbers[count].matches("-[0-9]+$")){ //Only includes whole numbers and -
 				if (this.rememberedOp == "") {
 					fraction = tempFraction(splitNumbers, count, fraction);
 				} else {
@@ -40,29 +40,27 @@ public class FractionCalculator {
 	}
 	public Fraction tempFraction(String[] splitNumbers, int count, Fraction fraction) { //This method sets the numerator and denominator of a string of numbers
 		if (splitNumbers[count].contains("/")) {
-			for (int i = 0; i < splitNumbers[count].length(); i++) {
-				String singleArray = splitNumbers[count];
-				if (singleArray.charAt(i)== '/') {
-					if (singleArray.matches(".*[a-zA-Z]+.*")) {
-						System.out.println("Error in tempFraction");
+			String singleArray[] = splitNumbers[count].split("/");
+			for (int i = 0; i < singleArray.length; i++) {
+				if (singleArray[i].matches("-[0-9]+$")) {
+					int num = Integer.parseInt(singleArray[0]);
+					int denom = Integer.parseInt(singleArray[1]);
+					if (denom == 0) {
+						System.out.println("Error. Invalid Denominator");
 						fraction.setNumerator(0);
 						fraction.setDenominator(1);
 						break;
 					}else {
-						int num = Integer.parseInt(singleArray.substring(0, i));
-						int denom = Integer.parseInt(singleArray.substring(i+1));
-						if (denom == 0) {
-							System.out.println("Error. Invalid Denominator");
-							fraction.setNumerator(0);
-							fraction.setDenominator(1);
-							break;
-						}else {
-							return new Fraction(num, denom);
-						}
+						return new Fraction(num, denom);
 					}
+				}else {
+					System.out.println("Error in tempFraction");
+					fraction.setNumerator(0);
+					fraction.setDenominator(1);
+					break;
 				}
 			}
-		} else {
+		}else {
 			int num = Integer.parseInt(splitNumbers[count]);
 			int denom = 1;
 			return new Fraction(num, denom);
