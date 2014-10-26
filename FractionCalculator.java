@@ -19,14 +19,14 @@ public class FractionCalculator {
 				} else {
 					fraction = operator(rememberedOp, fraction, tempFraction (splitNumbers, count, fraction));
 				}
-			}else if (splitNumbers[count].contains("[0-9]+")) {
+			} else if (splitNumbers[count].matches("[0-9]+")){
 				if (rememberedOp == null) {
 					fraction = tempFraction(splitNumbers, count, fraction);
 				} else {
 					fraction = operator(rememberedOp, fraction, tempFraction (splitNumbers, count, fraction));
 				}
 			} else {
-				System.out.println("Error");
+				System.out.println("Error in evaluate");
 				fraction.setNumerator(0);
 				fraction.setDenominator(1);
 				break;
@@ -39,15 +39,15 @@ public class FractionCalculator {
 			for (int i = 0; i < splitNumbers[count].length(); i++) {
 				String singleArray = splitNumbers[count];
 				if (singleArray.charAt(i)== '/') {
-					if (!singleArray.contains("[0-9]+") ||!singleArray.contains("/")) {
-						System.out.println("Error");
-						fraction.setNumerator(0);
-						fraction.setDenominator(1);
-						break;
-					}else {
+					if (singleArray.matches("[0-9]+") && singleArray.matches("/")) {
 						int num = Integer.parseInt(singleArray.substring(0, i));
 						int denom = Integer.parseInt(singleArray.substring(i+1, singleArray.length() -1));
 						return new Fraction(num, denom);
+					}else {
+						System.out.println("Error in tempFraction");
+						fraction.setNumerator(0);
+						fraction.setDenominator(1);
+						break;
 					}
 				}
 			}
