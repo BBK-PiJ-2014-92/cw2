@@ -23,6 +23,8 @@ public class FractionCalculator {
 			} else if (splitNumbers[count].equals("c") ||splitNumbers[count].equals("C") ||splitNumbers[count].equals("clear")) { //This checks to see if clear is mentioned in the array
 				fraction.setNumerator(0);
 				fraction.setDenominator(1);
+			} else if (splitNumbers[count].equals("\n")) {
+				this.rememberedOp = "";
 			} else if (splitNumbers[count].contains("/")) { //This is the check for fractions
 				if (this.rememberedOp == "") {
 					fraction = tempFraction(splitNumbers, count, fraction);
@@ -48,7 +50,7 @@ public class FractionCalculator {
 		if (splitNumbers[count].contains("/")) {
 			String singleArray[] = splitNumbers[count].split("/");
 			for (int i = 0; i < singleArray.length; i++) {
-				if (singleArray[i].matches("-[0-9]+$")) {
+				if (singleArray[i].matches("-[0-9]+$") || singleArray[i].matches("[0-9]+$")) {
 					int num = Integer.parseInt(singleArray[0]);
 					int denom = Integer.parseInt(singleArray[1]);
 					if (denom == 0) {
