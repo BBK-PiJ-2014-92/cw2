@@ -4,7 +4,7 @@ public class FractionCalculator {
 		String[] splitNumbers = inputString.split(" ");
 		String rememberedOp = null;
 		for (int count = 0; count < splitNumbers.length; count++) {
-			if (splitNumbers[count].equals("/") ||splitNumbers[count].equals("+") ||splitNumbers[count].equals("-") ||splitNumbers[count].equals("+")) {
+			if (splitNumbers[count].equals("/") ||splitNumbers[count].equals("+") ||splitNumbers[count].equals("-") ||splitNumbers[count].equals("*")) {
 				rememberedOp = splitNumbers[count];
 			} else if (splitNumbers[count].equals("a") ||splitNumbers[count].equals("A") ||splitNumbers[count].equals("abs")) {
 				fraction = fraction.absValue();
@@ -13,13 +13,13 @@ public class FractionCalculator {
 			} else if (splitNumbers[count].equals("c") ||splitNumbers[count].equals("C") ||splitNumbers[count].equals("clear")) {
 				fraction.setNumerator(0);
 				fraction.setDenominator(1);
-			} else if (splitNumbers[count].contains("/") && !splitNumbers[count].contains("[a-zA-Z]+")) {
+			} else if (splitNumbers[count].contains("/")) {
 				if (rememberedOp == null) {
 					fraction = tempFraction(splitNumbers, count, fraction);
 				} else {
 					fraction = operator(rememberedOp, fraction, tempFraction (splitNumbers, count, fraction));
 				}
-			}else if (splitNumbers[count].contains("[0-9]+") && !splitNumbers[count].contains("[a-zA-Z]+")) {
+			}else if (splitNumbers[count].contains("[0-9]+")) {
 				if (rememberedOp == null) {
 					fraction = tempFraction(splitNumbers, count, fraction);
 				} else {
