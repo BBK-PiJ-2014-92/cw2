@@ -23,19 +23,19 @@ public class FractionCalculator {
 			} else if (splitNumbers[count].equals("c") ||splitNumbers[count].equals("C") ||splitNumbers[count].equals("clear")) { //This checks to see if clear is mentioned in the array
 				fraction.setNumerator(0);
 				fraction.setDenominator(1);
-			} else if (splitNumbers[count].equals("\n")) {
+			} else if (splitNumbers[count].equals("\n")) { //This forgets the current remembered operation
 				this.rememberedOp = "";
 			} else if (splitNumbers[count].contains("/")) { //This is the check for fractions
 				if (this.rememberedOp == "") {
-					fraction = tempFraction(splitNumbers, count, fraction);
+					fraction = tempFraction(splitNumbers, count, fraction); //If there is no remembered operation, then fraction becomes the stored value on the calculator
 				} else {
-					fraction = this.operator(fraction, tempFraction (splitNumbers, count, fraction));
+					fraction = this.operator(fraction, tempFraction (splitNumbers, count, fraction)); //If there is a remembered operation, then this fraction becomes the second operand
 				}
-			} else if (splitNumbers[count].matches("-[0-9]+$")){ //Only includes whole numbers and -
+			} else if (splitNumbers[count].matches("-[0-9]+$") || splitNumbers[count].matches("[0-9]+$")){ //Only includes whole numbers and -
 				if (this.rememberedOp == "") {
-					fraction = tempFraction(splitNumbers, count, fraction);
+					fraction = tempFraction(splitNumbers, count, fraction); //If there is no remembered operation, then this whole number becomes the stores value on the calculator
 				} else {
-					fraction = this.operator(fraction, tempFraction (splitNumbers, count, fraction));
+					fraction = this.operator(fraction, tempFraction (splitNumbers, count, fraction)); //If there is a remembered operation, then this whole number becomes the second operand
 				}
 			} else {
 				System.out.println("Error!");
