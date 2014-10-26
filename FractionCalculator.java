@@ -24,6 +24,9 @@ public class FractionCalculator {
 			} else if (splitNumbers[count].equals("c") ||splitNumbers[count].equals("C") ||splitNumbers[count].equals("clear")) { //This checks to see if clear is mentioned in the array
 				fraction.setNumerator(0);
 				fraction.setDenominator(1);
+			} else if (splitNumbers[count].equals("\\n") || splitNumbers[count].equals("\\N")){
+				rememberedOp = "";
+				System.out.print("\n");
 			} else if (splitNumbers[count].contains("/")) { //This is the check for fractions
 				if (this.rememberedOp == "") {
 					fraction = tempFraction(splitNumbers, count, fraction); //If there is no remembered operation, then fraction becomes the stored value on the calculator
