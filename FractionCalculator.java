@@ -12,9 +12,7 @@ public class FractionCalculator {
 				if(this.rememberedOp == "") {
 					this.rememberedOp = splitNumbers[count];
 				}else{
-					System.out.println("Error!");
-					fraction.setNumerator(0);
-					fraction.setDenominator(1);
+					errorMessage(fraction);
 					break;
 				}
 			} else if (splitNumbers[count].equals("a") ||splitNumbers[count].equals("A") ||splitNumbers[count].equals("abs")) { //This checks to see whether absolute value is mentioned in the array
@@ -40,9 +38,7 @@ public class FractionCalculator {
 					fraction = this.operator(fraction, tempFraction (splitNumbers, count, fraction)); //If there is a remembered operation, then this whole number becomes the second operand
 				}
 			} else {
-				System.out.println("Error!");
-				fraction.setNumerator(0);
-				fraction.setDenominator(1);
+				errorMessage(fraction);
 				break;
 			}
 		} System.out.println(fraction);
@@ -51,23 +47,23 @@ public class FractionCalculator {
 	public Fraction tempFraction(String[] splitNumbers, int count, Fraction fraction) { //This method sets the numerator and denominator of the String array.
 		if (splitNumbers[count].contains("/")) {
 			String singleArray[] = splitNumbers[count].split("/");
-			for (int i = 0; i < singleArray.length; i++) {
-				if (singleArray[i].matches("-[0-9]+$") || singleArray[i].matches("[0-9]+$")) {
-					int num = Integer.parseInt(singleArray[0]);
-					int denom = Integer.parseInt(singleArray[1]);
-					if (denom == 0) {
-						System.out.println("Error! Invalid Denominator");
-						fraction.setNumerator(0);
-						fraction.setDenominator(1);
-						break;
+			if (singleArray.length != 2) {
+				errorMessage(fraction);
+			}else{
+				for (int i = 0; i < singleArray.length; i++) {
+					if (singleArray[i].matches("-[0-9]+$") || singleArray[i].matches("[0-9]+$")) {
+						int num = Integer.parseInt(singleArray[0]);
+						int denom = Integer.parseInt(singleArray[1]);
+						if (denom == 0) {
+							errorMessage(fraction);
+							break;
+						}else {
+							return new Fraction(num, denom);
+						}
 					}else {
-						return new Fraction(num, denom);
+						errorMessage(fraction);
+						break;
 					}
-				}else {
-					System.out.println("Error!");
-					fraction.setNumerator(0);
-					fraction.setDenominator(1);
-					break;
 				}
 			}
 		}else {
@@ -90,14 +86,18 @@ public class FractionCalculator {
 			return fraction = fraction.multiply(tempFraction);
 		}else {
 			if (tempFraction.getNumerator() == 0) {
-				System.out.println("Error! Cannot Divide by zero");
-				fraction.setNumerator(0);
-				fraction.setDenominator(1);
+				errorMessage(fraction);
 				return fraction;
 			}else {
 				this.rememberedOp = "";
 				return fraction = fraction.divide(tempFraction);
 			}
 		}
+	}
+
+	public void errorMessage(Fraction fraction) {
+		System.out.println("Error!");
+		fraction.setNumerator(0);
+		fraction.setDenominator(1);
 	}
 }
