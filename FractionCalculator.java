@@ -39,15 +39,15 @@ public class FractionCalculator {
 			for (int i = 0; i < splitNumbers[count].length(); i++) {
 				String singleArray = splitNumbers[count];
 				if (singleArray.charAt(i)== '/') {
-					if (singleArray.matches("[0-9]+") && singleArray.matches("/")) {
-						int num = Integer.parseInt(singleArray.substring(0, i));
-						int denom = Integer.parseInt(singleArray.substring(i+1, singleArray.length() -1));
-						return new Fraction(num, denom);
-					}else {
+					if (singleArray.matches(".*[a-zA-Z]+.*")) {
 						System.out.println("Error in tempFraction");
 						fraction.setNumerator(0);
 						fraction.setDenominator(1);
 						break;
+					}else {
+						int num = Integer.parseInt(singleArray.substring(0, i));
+						int denom = Integer.parseInt(singleArray.substring(i+1));
+						return new Fraction(num, denom);
 					}
 				}
 			}
