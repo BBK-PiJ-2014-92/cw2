@@ -31,7 +31,8 @@ public class FractionCalculator {
 				fraction.setDenominator(1);
 				break;
 			}
-		} return fraction;
+		} System.out.println(fraction);
+		return fraction;
 	}
 	public Fraction tempFraction(String[] splitNumbers, int count, Fraction fraction) {
 		if (splitNumbers[count].contains("/")) {
