@@ -15,6 +15,7 @@ public class FractionCalculator {
 					System.out.println("Error!");
 					fraction.setNumerator(0);
 					fraction.setDenominator(1);
+					break;
 				}
 			} else if (splitNumbers[count].equals("a") ||splitNumbers[count].equals("A") ||splitNumbers[count].equals("abs")) { //This checks to see whether absolute value is mentioned in the array
 				fraction = fraction.absValue();
@@ -23,8 +24,6 @@ public class FractionCalculator {
 			} else if (splitNumbers[count].equals("c") ||splitNumbers[count].equals("C") ||splitNumbers[count].equals("clear")) { //This checks to see if clear is mentioned in the array
 				fraction.setNumerator(0);
 				fraction.setDenominator(1);
-			} else if (splitNumbers[count].equals("\n")) { //This forgets the current remembered operation
-				this.rememberedOp = "";
 			} else if (splitNumbers[count].contains("/")) { //This is the check for fractions
 				if (this.rememberedOp == "") {
 					fraction = tempFraction(splitNumbers, count, fraction); //If there is no remembered operation, then fraction becomes the stored value on the calculator
