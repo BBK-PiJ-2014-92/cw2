@@ -15,26 +15,36 @@ public class FractionCalculator {
 				fraction.setDenominator(1);
 			} else if (splitNumbers[count].contains("/")) {
 				if (rememberedOp == null) {
-					fraction = tempFraction(splitNumbers, count);
+					fraction = tempFraction(splitNumbers, count, fraction);
 				} else {
-					fraction = operator(rememberedOp, fraction, tempFraction (splitNumbers, count));
+					fraction = operator(rememberedOp, fraction, tempFraction (splitNumbers, count, fraction));
 				}
-			}
-		}
+			}else if (splitNumbers[count].contains("[0-9]+") && !splitNumbers[count].contain("[a-zA-z]+")) {
+				if (rememberedOp == null) {
+					fraction = tempFraction(splitNumbers, count, fraction);
+				} else {
+					fraction = operator(rememberedOp, fraction, tempFraction (splitNumbers, count, fraction));
+				}
+			} else {
+				System.out.println("Error");
+				fraction.setNumerator(0);
+				fraction.setDenominator(1);
+				break;
+		} return fraction;
 	}
-	public Fraction tempFraction(String[] splitNumbers, int count) {
+	public Fraction tempFraction(String[] splitNumbers, int count, Fraction fraction) {
 		if (splitNumbers[count].contains("/")) {
 			for (int i = 0; i < splitNumbers[count].length(); i++) {
-				String singleArray = splitNumber[count]
-				if (singleArray.charAt(i).equals("/")) {
+				String singleArray = splitNumbers[count];
+				if (singleArray.charAt(i)== '/') {
 					if (!singleArray.contains("[0-9]+") ||!singleArray.contains("/")) {
 						System.out.println("Error");
 						fraction.setNumerator(0);
 						fraction.setDenominator(1);
 						break;
 					}else {
-						int num = Integer.parseInt(splitNumbers[count].substring(0, i));
-						int denom = Integer.parseInt(splitNumbers[count].substring(i+1, splitNumbers[count].length() -1));
+						int num = Integer.parseInt(singleArray.substring(0, i));
+						int denom = Integer.parseInt(singleArray.substring(i+1, singleArray.length() -1));
 						return new Fraction(num, denom);
 					}
 				}
@@ -44,6 +54,7 @@ public class FractionCalculator {
 			int denom = 1;
 			return new Fraction(num, denom);
 		}
+		return fraction;
 	}
 
 	public Fraction operator(String rememberedOp, Fraction fraction, Fraction tempFraction) {
