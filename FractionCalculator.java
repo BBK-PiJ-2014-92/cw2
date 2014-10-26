@@ -26,7 +26,7 @@ public class FractionCalculator {
 				fraction.setDenominator(1);
 			} else if (splitNumbers[count].equals("\\n") || splitNumbers[count].equals("\\N")){
 				rememberedOp = "";
-				System.out.print("\n");
+				System.out.println();
 			} else if (splitNumbers[count].contains("/")) { //This is the check for fractions
 				if (this.rememberedOp == "") {
 					fraction = tempFraction(splitNumbers, count, fraction); //If there is no remembered operation, then fraction becomes the stored value on the calculator
