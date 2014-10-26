@@ -86,8 +86,15 @@ public class FractionCalculator {
 			this.rememberedOp = "";
 			return fraction = fraction.multiply(tempFraction);
 		}else {
-			this.rememberedOp = "";
-			return fraction = fraction.divide(tempFraction);
+			if (tempFraction.getNumerator() == 0) {
+				System.out.println("Error! Cannot Divide by zero");
+				fraction.setNumerator(0);
+				fraction.setDenominator(1);
+				return fraction;
+			}else {
+				this.rememberedOp = "";
+				return fraction = fraction.divide(tempFraction);
+			}
 		}
 	}
 }
