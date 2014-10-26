@@ -94,6 +94,9 @@ public class Fraction {
 		if(this.getDenominator() < 0) {
 			int denom = this.getDenominator() * -1;
 			return new Fraction(this.getNumerator(), denom);
+		}else if (this.getNumerator() < 0 && this.getDenominator() == 1) {
+			int num = this.getNumerator() * -1;
+			return new Fraction(num, this.getDenominator());
 		}else {
 			return new Fraction(this.getNumerator(), this.getDenominator());
 		}
