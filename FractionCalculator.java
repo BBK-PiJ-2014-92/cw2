@@ -9,7 +9,13 @@ public class FractionCalculator {
 		String[] splitNumbers = inputString.split(" "); //Split the string into an String Array containing the numbers and operators
 		for (int count = 0; count < splitNumbers.length; count++) {
 			if (splitNumbers[count].equals("/") ||splitNumbers[count].equals("+") ||splitNumbers[count].equals("-") ||splitNumbers[count].equals("*")) { //This sets the operator
-				this.rememberedOp = splitNumbers[count];
+				if(this.rememberedOp == "") {
+					this.rememberedOp = splitNumbers[count];
+				}else{
+					System.out.println("Error!");
+					fraction.setNumerator(0);
+					fraction.setDenominator(1);
+				}
 			} else if (splitNumbers[count].equals("a") ||splitNumbers[count].equals("A") ||splitNumbers[count].equals("abs")) { //This checks to see whether absolute value is mentioned in the array
 				fraction = fraction.absValue();
 			} else if (splitNumbers[count].equals("n") ||splitNumbers[count].equals("N") ||splitNumbers[count].equals("neg")) { //This checks to see if negate is mentioned in the array
@@ -30,7 +36,7 @@ public class FractionCalculator {
 					fraction = this.operator(fraction, tempFraction (splitNumbers, count, fraction));
 				}
 			} else {
-				System.out.println("Error in evaluate");
+				System.out.println("Error!");
 				fraction.setNumerator(0);
 				fraction.setDenominator(1);
 				break;
@@ -46,7 +52,7 @@ public class FractionCalculator {
 					int num = Integer.parseInt(singleArray[0]);
 					int denom = Integer.parseInt(singleArray[1]);
 					if (denom == 0) {
-						System.out.println("Error. Invalid Denominator");
+						System.out.println("Error! Invalid Denominator");
 						fraction.setNumerator(0);
 						fraction.setDenominator(1);
 						break;
@@ -54,7 +60,7 @@ public class FractionCalculator {
 						return new Fraction(num, denom);
 					}
 				}else {
-					System.out.println("Error in tempFraction");
+					System.out.println("Error!");
 					fraction.setNumerator(0);
 					fraction.setDenominator(1);
 					break;
