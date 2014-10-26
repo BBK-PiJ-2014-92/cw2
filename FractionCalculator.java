@@ -6,7 +6,7 @@ public class FractionCalculator {
 	}
 
 	public Fraction evaluate(Fraction fraction, String inputString) {
-		String[] splitNumbers = inputString.split(" ");
+		String[] splitNumbers = inputString.split(" "); //Split the string into an String Array containing the numbers and operators
 		for (int count = 0; count < splitNumbers.length; count++) {
 			if (splitNumbers[count].equals("/") ||splitNumbers[count].equals("+") ||splitNumbers[count].equals("-") ||splitNumbers[count].equals("*")) { //This sets the operator
 				this.rememberedOp = splitNumbers[count];
@@ -38,7 +38,7 @@ public class FractionCalculator {
 		} System.out.println(fraction);
 		return fraction;
 	}
-	public Fraction tempFraction(String[] splitNumbers, int count, Fraction fraction) { //This method sets the numerator and denominator of a string of numbers
+	public Fraction tempFraction(String[] splitNumbers, int count, Fraction fraction) { //This method sets the numerator and denominator of the String array.
 		if (splitNumbers[count].contains("/")) {
 			String singleArray[] = splitNumbers[count].split("/");
 			for (int i = 0; i < singleArray.length; i++) {
@@ -68,7 +68,7 @@ public class FractionCalculator {
 		return fraction;
 	}
 
-	public Fraction operator(Fraction fraction, Fraction tempFraction) {
+	public Fraction operator(Fraction fraction, Fraction tempFraction) { //This method determines what operator is currently being held and outputs the result of that operator on the operands
 		if (this.rememberedOp.equals("+")) {
 			this.rememberedOp = "";
 			return fraction = fraction.add(tempFraction);
