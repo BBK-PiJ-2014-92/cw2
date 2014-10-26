@@ -13,13 +13,13 @@ public class FractionCalculator {
 			} else if (splitNumbers[count].equals("c") ||splitNumbers[count].equals("C") ||splitNumbers[count].equals("clear")) {
 				fraction.setNumerator(0);
 				fraction.setDenominator(1);
-			} else if (splitNumbers[count].contains("/")) {
+			} else if (splitNumbers[count].contains("/") && !splitNumbers[count].contains("[a-zA-Z]+")) {
 				if (rememberedOp == null) {
 					fraction = tempFraction(splitNumbers, count, fraction);
 				} else {
 					fraction = operator(rememberedOp, fraction, tempFraction (splitNumbers, count, fraction));
 				}
-			}else if (splitNumbers[count].contains("[0-9]+") && !splitNumbers[count].contain("[a-zA-z]+")) {
+			}else if (splitNumbers[count].contains("[0-9]+") && !splitNumbers[count].contains("[a-zA-Z]+")) {
 				if (rememberedOp == null) {
 					fraction = tempFraction(splitNumbers, count, fraction);
 				} else {
@@ -30,6 +30,7 @@ public class FractionCalculator {
 				fraction.setNumerator(0);
 				fraction.setDenominator(1);
 				break;
+			}
 		} return fraction;
 	}
 	public Fraction tempFraction(String[] splitNumbers, int count, Fraction fraction) {
